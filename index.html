@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Bhai Dooj Ka Hisaab 🪔 | Shagun Calculator</title>
+  
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="Bhai Dooj Ka Hisaab 🪔 | Shagun Calculator">
+  <meta name="description" content="Bhai ke wallet ka sach, ab behna ke haath mein! Calculate how much shagun bhai owes behna with this hilarious viral Desi calculator.">
+  <meta name="keywords" content="Bhai Dooj, Shagun Calculator, Bhai Dooj Ka Hisaab, Desi Meme, Bhai Dooj Gift, Indian Festival">
+  <meta name="author" content="Sanjay">
+  <meta name="theme-color" content="#780016">
+
+  <!-- Open Graph / Facebook / WhatsApp -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bhaidoojkahisaab.vercel.app/">
+  <meta property="og:title" content="Bhai Dooj Ka Hisaab 🪔 | Official Shagun Calculator">
+  <meta property="og:description" content="Kya bhai Kanjoos hai ya Ambani? Calculate the official shagun penalty & share the confession card!">
+  <meta property="og:image" content="https://bhaidoojkahisaab.vercel.app/og-preview.png">
+
+  <!-- Twitter Card -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://bhaidoojkahisaab.vercel.app/">
+  <meta property="twitter:title" content="Bhai Dooj Ka Hisaab 🪔 | Shagun Calculator">
+  <meta property="twitter:description" content="Calculate what bhai owes his behna this Bhai Dooj. 100% comedy, 0% escape!">
+  <meta property="twitter:image" content="https://bhaidoojkahisaab.vercel.app/og-preview.png">
+
+  <!-- Favicon (Festive Diya SVG) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🪔</text></svg>">
+
+  <!-- Google Fonts: Outfit (modern body/headings) and Rozha One (festive Indian serif) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Rozha+One&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- ========================================================================= -->
+  <!-- ANALYTICS PLACEHOLDER (Free & Privacy-Friendly: Plausible or GoatCounter) -->
+  <!-- ========================================================================= -->
+  <!-- OPTION 1: Plausible Analytics (Uncomment and replace yourdomain.com) -->
+  <!-- <script defer data-domain="bhaidoojkahisaab.vercel.app" src="https://plausible.io/js/script.js"></script> -->
+
+  <!-- OPTION 2: GoatCounter Analytics (Uncomment and replace YOUR_CODE) -->
+  <!-- <script data-goatcounter="https://YOUR_CODE.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script> -->
+</head>
+<body>
+  <!-- Confetti Canvas for Celebratory Explosions -->
+  <canvas id="confettiCanvas" aria-hidden="true"></canvas>
+
+  <!-- Ambient Festive Background Lights -->
+  <div class="ambient-glow glow-top" aria-hidden="true"></div>
+  <div class="ambient-glow glow-bottom" aria-hidden="true"></div>
+
+  <!-- App Wrapper (Mobile-first centered container) -->
+  <main id="app" class="app-container" role="main">
+    
+    <!-- HEADER BAR -->
+    <header class="app-header">
+      <div class="header-content">
+        <span class="header-diya" aria-hidden="true">🪔</span>
+        <div class="brand">
+          <span class="brand-title">Bhai Dooj Ka Hisaab</span>
+          <span class="brand-badge">SHAGUN CALCULATOR</span>
+        </div>
+        <span class="header-diya" aria-hidden="true">🪔</span>
+      </div>
+    </header>
+
+    <!-- SCREEN 1: LANDING -->
+    <section id="screenLanding" class="screen screen-active">
+      <div class="hero-card">
+        <!-- Animated Festive Diya SVG -->
+        <div class="diya-wrapper" aria-hidden="true">
+          <svg class="festive-diya-svg" viewBox="0 0 160 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Flame Glow -->
+            <ellipse class="flame-glow" cx="80" cy="38" rx="28" ry="32" fill="url(#flameGlowGrad)" />
+            <!-- Flame Body -->
+            <path class="flame-outer" d="M80 8C70 28 65 38 65 52C65 64 71.7 72 80 72C88.3 72 95 64 95 52C95 38 90 28 80 8Z" fill="url(#flameGradOuter)" />
+            <path class="flame-inner" d="M80 24C74 36 71 44 71 54C71 62 75 67 80 67C85 67 89 62 89 54C89 44 86 36 80 24Z" fill="url(#flameGradInner)" />
+            <!-- Diya Base (Brass / Clay) -->
+            <path d="M20 72C24 96 52 110 80 110C108 110 136 96 140 72C140 72 108 80 80 80C52 80 20 72 20 72Z" fill="url(#diyaBodyGrad)" />
+            <ellipse cx="80" cy="74" rx="60" ry="10" fill="url(#diyaRimGrad)" stroke="#f59e0b" stroke-width="1.5" />
+            <!-- Festive Dots on Rim -->
+            <circle cx="40" cy="74" r="2.5" fill="#fef08a" />
+            <circle cx="60" cy="76" r="2.5" fill="#fef08a" />
+            <circle cx="80" cy="77" r="2.5" fill="#fef08a" />
+            <circle cx="100" cy="76" r="2.5" fill="#fef08a" />
+            <circle cx="120" cy="74" r="2.5" fill="#fef08a" />
+            <!-- Gradients Definition -->
+            <defs>
+              <radialGradient id="flameGlowGrad" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.8" />
+                <stop offset="100%" stop-color="#ef4444" stop-opacity="0" />
+              </radialGradient>
+              <linearGradient id="flameGradOuter" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#fef08a" />
+                <stop offset="40%" stop-color="#f59e0b" />
+                <stop offset="100%" stop-color="#dc2626" />
+              </linearGradient>
+              <linearGradient id="flameGradInner" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#ffffff" />
+                <stop offset="60%" stop-color="#fef08a" />
+                <stop offset="100%" stop-color="#f59e0b" />
+              </linearGradient>
+              <linearGradient id="diyaBodyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#d97706" />
+                <stop offset="50%" stop-color="#b45309" />
+                <stop offset="100%" stop-color="#78350f" />
+              </linearGradient>
+              <linearGradient id="diyaRimGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#92400e" />
+                <stop offset="50%" stop-color="#f59e0b" />
+                <stop offset="100%" stop-color="#92400e" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+
+        <div class="tag-pill">✨ Official Shagun Penalty Audit ✨</div>
+        <h1 class="main-heading">Bhai Dooj Ka Hisaab</h1>
+        <p class="sub-heading">
+          Bhai ke wallet ka sach, ab behna ke haath mein! Saare jhoothe bahane, chori ki chocolates aur purane kaand jodo... aur official shagun vasoolo! 💸
+        </p>
+
+        <!-- Mode Selection Buttons -->
+        <div class="mode-selection" role="group" aria-label="Choose your role">
+          <button id="btnModeBehna" class="mode-btn mode-btn-behna" type="button" aria-label="Select Behna Mode">
+            <span class="mode-icon">🌸</span>
+            <div class="mode-text">
+              <span class="mode-title">Main Behna Hoon</span>
+              <span class="mode-desc">Bhai ke saare kaand ginwao aur shagun vasoolo!</span>
+            </div>
+            <span class="mode-arrow">👉</span>
+          </button>
+
+          <button id="btnModeBhai" class="mode-btn mode-btn-bhai" type="button" aria-label="Select Bhai Mode">
+            <span class="mode-icon">🔥</span>
+            <div class="mode-text">
+              <span class="mode-title">Main Bhai Hoon</span>
+              <span class="mode-desc">Apne paap confess karo aur official jurmana jaano!</span>
+            </div>
+            <span class="mode-arrow">👉</span>
+          </button>
+        </div>
+
+        <!-- Fun disclaimer -->
+        <div class="festive-note">
+          <span>⚖️ 100% Satya & Comedy Audit • Behen Hamesha Jeetegi</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 2: NAMES & SETUP -->
+    <section id="screenSetup" class="screen">
+      <div class="card setup-card">
+        <button id="btnBackToLanding" class="back-link-btn" type="button" aria-label="Go back to landing screen">
+          ← Mode Badlo
+        </button>
+
+        <div id="setupHeaderBadge" class="tag-pill">🌸 Behna Mode</div>
+        <h2 id="setupTitle" class="section-title">Pehchaan Patra Bharo</h2>
+        <p id="setupSubtitle" class="section-desc">Naam daalo taaki official hisaab ki receipt ban sake!</p>
+
+        <form id="setupForm" onsubmit="return false;" novalidate>
+          <div class="input-group">
+            <label for="inputHerName" class="input-label">
+              <span>🌸 Behna Ka Naam</span>
+              <span class="input-optional">(Optional, default: "Behna")</span>
+            </label>
+            <input type="text" id="inputHerName" class="text-input" placeholder="e.g. Priya, Simran, Choti" maxlength="24" autocomplete="off">
+          </div>
+
+          <div class="input-group">
+            <label for="inputHisName" class="input-label">
+              <span>🔥 Bhai Ka Naam</span>
+              <span class="input-optional">(Optional, default: "Bhai")</span>
+            </label>
+            <input type="text" id="inputHisName" class="text-input" placeholder="e.g. Rahul, Aman, Bhaiya" maxlength="24" autocomplete="off">
+          </div>
+
+          <!-- Bhai Mode Specific Field: Planned Shagun -->
+          <div id="bhaiPlannedSection" class="bhai-planned-box hidden">
+            <label for="inputPlannedAmount" class="input-label">
+              <span>💰 Tum kitna dene wale the?</span>
+              <span class="input-optional">(Optional, sacch bolna)</span>
+            </label>
+            <div class="chip-container" role="radiogroup" aria-label="Quick pick planned amount">
+              <button type="button" class="amount-chip" data-val="101">₹101</button>
+              <button type="button" class="amount-chip" data-val="501">₹501</button>
+              <button type="button" class="amount-chip" data-val="1100">₹1,100</button>
+              <button type="button" class="amount-chip" data-val="2100">₹2,100</button>
+            </div>
+            <div class="currency-input-wrapper">
+              <span class="currency-symbol">₹</span>
+              <input type="number" id="inputPlannedAmount" class="text-input currency-input" placeholder="Ya custom amount daalo (e.g. 500)" min="0" max="1000000" step="1">
+            </div>
+            <p class="input-hint">⚠️ App tumhare plan ko official shagun se compare karega!</p>
+          </div>
+
+          <button id="btnStartQuestions" class="primary-action-btn" type="button">
+            <span>Hisaab Shuru Karo</span>
+            <span class="btn-icon">👉</span>
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- SCREEN 3: QUESTIONS -->
+    <section id="screenQuestion" class="screen">
+      <div class="card question-card">
+        <!-- Progress Bar & Indicator -->
+        <div class="progress-container">
+          <div class="progress-meta">
+            <span id="questionStepText" class="progress-step">Sawaal 1 / 7</span>
+            <span id="questionModeBadge" class="progress-badge">Behna Mode</span>
+          </div>
+          <div class="progress-track" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="7">
+            <div id="progressBarFill" class="progress-fill" style="width: 14.28%;"></div>
+          </div>
+        </div>
+
+        <!-- Question Prompt -->
+        <div class="question-header">
+          <h2 id="questionTitle" class="question-title">Kya tumhara bhai tumhara koi kaam karta hai?</h2>
+        </div>
+
+        <!-- 4 Tap-friendly Options -->
+        <div id="optionsContainer" class="options-grid" role="group" aria-label="Question options">
+          <!-- Dynamically populated via JS -->
+        </div>
+
+        <div class="question-nav">
+          <button id="btnPrevQuestion" class="secondary-btn" type="button">
+            ← Pichla Sawaal
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREEN 4: FAKE LOADING SCREEN -->
+    <section id="screenLoading" class="screen">
+      <div class="card loading-card">
+        <div class="loading-spinner-wrapper" aria-hidden="true">
+          <div class="festive-spinner">
+            <div class="spinner-diya">🪔</div>
+          </div>
+        </div>
+
+        <div class="tag-pill">⏳ Audit In Progress...</div>
+        <h2 class="loading-title">Calculating Shagun...</h2>
+        
+        <div class="status-msg-box">
+          <p id="loadingDynamicMsg" class="loading-message">
+            Bhai ki purani chori ki list scan ho rahi hai...
+          </p>
+        </div>
+
+        <div class="loading-dots-bar">
+          <div class="loading-dot"></div>
+          <div class="loading-dot"></div>
+          <div class="loading-dot"></div>
+        </div>
+
+        <p class="loading-subtext">Satya ki jeet hone wali hai, 2 second intezaar karein...</p>
+      </div>
+    </section>
+
+    <!-- SCREEN 5: RESULT & CARD GENERATION -->
+    <section id="screenResult" class="screen">
+      <div class="card result-card">
+        
+        <!-- Result Header Badge -->
+        <div class="result-badge-row">
+          <span class="tag-pill" id="resultModePill">🪔 Official Verdict</span>
+          <span class="tag-pill tag-pill-gold" id="resultTierBadge">Shaandar Bhai</span>
+        </div>
+
+        <!-- Who Owes Whom Header -->
+        <h2 id="resultHeadline" class="result-headline">
+          Bhai owes Behna
+        </h2>
+
+        <!-- Big Shagun Amount Display with Count-up -->
+        <div class="amount-hero-box" id="amountHeroBox">
+          <div class="amount-label">OFFICIAL SHAGUN PENALTY</div>
+          <div class="amount-digits">
+            <span class="currency-symbol">₹</span>
+            <span id="resultAmountDisplay" class="odometer-number">0</span>
+          </div>
+          <div class="shagun-shubh-tag">✨ 100% Shubh Shagun Number ✨</div>
+        </div>
+
+        <!-- SHAGUN ENVELOPE / LIFAFA WITH "BEHNA KA SHAGUN" STAMP -->
+        <div class="shagun-lifafa-wrapper" id="shagunLifafa">
+          <div class="lifafa-envelope">
+            <!-- Envelope Flap & Auspicious Shagun Coin -->
+            <div class="lifafa-flap" aria-hidden="true">
+              <div class="lifafa-coin" title="Pavitra Shagun Coin">₹1</div>
+            </div>
+
+            <!-- Envelope Body Content / Official Receipt Inside -->
+            <div class="lifafa-body">
+              <!-- Official Rubber Stamp: "BEHNA KA SHAGUN" -->
+              <div class="shagun-rubber-stamp" id="rubberStamp" role="img" aria-label="Official Stamp: Behna Ka Shagun">
+                <div class="stamp-inner">
+                  <div class="stamp-stars">★ ★ ★</div>
+                  <div class="stamp-title">BEHNA KA SHAGUN</div>
+                  <div class="stamp-subtitle">OFFICIALLY SANCTIONED</div>
+                  <div class="stamp-serial" id="stampSerial">NO. BD-8921-OK</div>
+                </div>
+              </div>
+
+              <!-- Lifafa Meta Details -->
+              <div class="lifafa-header-row">
+                <span class="lifafa-diya-icon">🪔</span>
+                <span class="lifafa-doc-title">OFFICIAL SHAGUN LIFAFA</span>
+                <span class="lifafa-diya-icon">🪔</span>
+              </div>
+
+              <div class="lifafa-details-grid">
+                <div class="lifafa-detail-item">
+                  <span class="detail-label">🌸 Haqdaar (Behna):</span>
+                  <span class="detail-value" id="lifafaHerName">Behna</span>
+                </div>
+                <div class="lifafa-detail-item">
+                  <span class="detail-label">🔥 Payer (Bhai):</span>
+                  <span class="detail-value" id="lifafaHisName">Bhai</span>
+                </div>
+                <div class="lifafa-detail-item">
+                  <span class="detail-label">💰 Pavitra Rashi:</span>
+                  <span class="detail-value lifafa-amount-highlight" id="lifafaAmount">₹0</span>
+                </div>
+                <div class="lifafa-detail-item">
+                  <span class="detail-label">⚖️ Audit Status:</span>
+                  <span class="detail-value status-non-ref">100% Non-Refundable ✅</span>
+                </div>
+              </div>
+
+              <div class="lifafa-blessing">
+                "Bhai ka wallet chahe khali ho jaye, Behna ki smile kabhi kam nahi honi chahiye!"
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bhai Mode Comparison Callout (if planned amount was entered) -->
+        <div id="bhaiComparisonBox" class="comparison-card hidden">
+          <div class="comparison-badge" id="comparisonBadge">Plan vs Reality</div>
+          <p id="comparisonText" class="comparison-text">
+            Tum ₹501 dene wale the. Hisaab ₹2,100 bol raha hai.
+          </p>
+        </div>
+
+        <!-- Roast Verdict Box -->
+        <div class="roast-box">
+          <div class="roast-title-row">
+            <span class="roast-icon">🔥</span>
+            <span class="roast-tag">Official Roast</span>
+          </div>
+          <p id="resultRoastText" class="roast-quote">
+            "Bhai ke andar ka sanskari beta aaj jaag gaya hai..."
+          </p>
+        </div>
+
+        <!-- Extras Line Box -->
+        <div class="extras-box">
+          <div class="extras-tag">🎁 MANDATORY EXTRAS:</div>
+          <p id="resultExtrasText" class="extras-content">
+            + 3 pending apologies aur ek naya charger
+          </p>
+        </div>
+
+        <!-- ACTION BUTTONS -->
+        <div class="result-actions">
+          
+          <!-- Cross-Share WhatsApp CTA (Dynamic label: Bhai ko Bhejo / Behna ko Bhejo) -->
+          <a id="btnWhatsAppShare" class="action-btn action-btn-whatsapp" href="#" target="_blank" rel="noopener noreferrer">
+            <span class="btn-icon">📲</span>
+            <span id="btnWhatsAppText">Bhai ko Bhejo (WhatsApp)</span>
+          </a>
+
+          <!-- Download Card Button -->
+          <button id="btnDownloadCard" class="action-btn action-btn-primary" type="button">
+            <span class="btn-icon">📥</span>
+            <span>Download Story Card (1080x1920)</span>
+          </button>
+
+          <!-- Native Share / Copy Link Button -->
+          <button id="btnShareNative" class="action-btn action-btn-secondary" type="button">
+            <span class="btn-icon">🔗</span>
+            <span id="btnShareNativeText">Link Share Karo</span>
+          </button>
+
+          <!-- Retry / Reset Button -->
+          <button id="btnRestartApp" class="action-btn action-btn-ghost" type="button">
+            <span class="btn-icon">🔄</span>
+            <span>Phir se Hisaab Lagao</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="app-footer">
+      <p class="footer-text">
+        Made with ❤️ for all behnas and bhais, by <a href="https://linkedin.com/in/sanjsoni" target="_blank" rel="noopener noreferrer" class="creator-link">Sanjay</a>
+      </p>
+      <p class="footer-subtext">Pure comedy & festive love • Tag us on your Instagram Stories!</p>
+    </footer>
+
+  </main>
+
+  <!-- Hidden Canvas for Instagram Story Card generation (1080x1920) -->
+  <canvas id="storyCardCanvas" width="1080" height="1920" style="display:none;" aria-hidden="true"></canvas>
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="toast-popup" role="status" aria-live="polite"></div>
+
+  <!-- Main JavaScript File -->
+  <script src="app.js"></script>
+</body>
+</html>
