@@ -1,10 +1,4 @@
-/* ==========================================================================
-   BHAI DOOJ KA HISAAB - FESTIVE STYLESHEET
-   Mobile-First • High Performance • Desi Festive Aesthetics
-   ========================================================================== */
-
 :root {
-  /* Color Palette */
   --bg-dark-900: #120307;
   --bg-dark-800: #23060f;
   --bg-dark-700: #3b0918;
@@ -30,11 +24,9 @@
   --text-dim: #fca5a5;
   --text-sub: #cbd5e1;
 
-  /* Typography */
   --font-body: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-festive: 'Rozha One', serif, Georgia;
 
-  /* Spacing & Radii */
   --radius-sm: 8px;
   --radius-md: 14px;
   --radius-lg: 20px;
@@ -43,7 +35,6 @@
   --shadow-card: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 0 1px var(--card-border);
 }
 
-/* Base Reset & Box Sizing */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -64,7 +55,6 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Accessibility Focus Ring */
 button:focus-visible,
 input:focus-visible,
 a:focus-visible {
@@ -72,7 +62,6 @@ a:focus-visible {
   outline-offset: 3px;
 }
 
-/* Background Ambient Glows */
 .ambient-glow {
   position: fixed;
   border-radius: 50%;
@@ -81,6 +70,7 @@ a:focus-visible {
   z-index: 0;
   opacity: 0.45;
 }
+
 .glow-top {
   top: -120px;
   left: 50%;
@@ -89,6 +79,7 @@ a:focus-visible {
   height: 300px;
   background: radial-gradient(circle, #f59e0b 0%, #dc2626 60%, transparent 80%);
 }
+
 .glow-bottom {
   bottom: -150px;
   left: 50%;
@@ -98,7 +89,6 @@ a:focus-visible {
   background: radial-gradient(circle, #780016 0%, #3b0918 60%, transparent 80%);
 }
 
-/* Confetti Canvas */
 #confettiCanvas {
   position: fixed;
   top: 0;
@@ -109,7 +99,6 @@ a:focus-visible {
   z-index: 9999;
 }
 
-/* App Container (Mobile-First 360px - 480px width) */
 .app-container {
   position: relative;
   z-index: 10;
@@ -122,10 +111,10 @@ a:focus-visible {
   padding: 12px 16px 28px 16px;
 }
 
-/* App Header */
 .app-header {
   padding: 10px 0 16px 0;
 }
+
 .header-content {
   display: flex;
   align-items: center;
@@ -139,15 +128,18 @@ a:focus-visible {
   margin: 0 auto;
   width: fit-content;
 }
+
 .header-diya {
   font-size: 1.15rem;
   filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.8));
 }
+
 .brand {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .brand-title {
   font-family: var(--font-festive);
   font-size: 1.05rem;
@@ -155,6 +147,7 @@ a:focus-visible {
   color: var(--gold-light);
   letter-spacing: 0.5px;
 }
+
 .brand-badge {
   font-size: 0.62rem;
   font-weight: 800;
@@ -162,7 +155,6 @@ a:focus-visible {
   letter-spacing: 1.2px;
 }
 
-/* Screen Transitions */
 .screen {
   display: none;
   opacity: 0;
@@ -170,13 +162,13 @@ a:focus-visible {
   transition: opacity 0.3s ease, transform 0.3s ease;
   width: 100%;
 }
+
 .screen.screen-active {
   display: block;
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Cards */
 .card, .hero-card {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
@@ -188,10 +180,10 @@ a:focus-visible {
   text-align: center;
 }
 
-/* Hero Section */
 .hero-card {
   padding: 28px 20px;
 }
+
 .diya-wrapper {
   margin: 0 auto 12px auto;
   width: 110px;
@@ -200,15 +192,18 @@ a:focus-visible {
   align-items: center;
   justify-content: center;
 }
+
 .festive-diya-svg {
   width: 100%;
   height: 100%;
   overflow: visible;
 }
+
 .flame-outer, .flame-inner {
   transform-origin: 80px 65px;
   animation: flicker 1.8s infinite alternate ease-in-out;
 }
+
 .flame-glow {
   animation: pulseGlow 2.2s infinite alternate ease-in-out;
 }
@@ -226,7 +221,6 @@ a:focus-visible {
   100% { opacity: 1; transform: scale(1.15); }
 }
 
-/* Pills & Tags */
 .tag-pill {
   display: inline-block;
   background: rgba(245, 158, 11, 0.15);
@@ -240,6 +234,7 @@ a:focus-visible {
   letter-spacing: 0.8px;
   margin-bottom: 12px;
 }
+
 .tag-pill-gold {
   background: linear-gradient(135deg, #f59e0b, #d97706);
   color: #120307;
@@ -263,13 +258,13 @@ a:focus-visible {
   margin-bottom: 24px;
 }
 
-/* Mode Selection Buttons */
 .mode-selection {
   display: flex;
   flex-direction: column;
   gap: 14px;
   margin-bottom: 22px;
 }
+
 .mode-btn {
   display: flex;
   align-items: center;
@@ -284,33 +279,40 @@ a:focus-visible {
   overflow: hidden;
   width: 100%;
 }
+
 .mode-btn-behna {
   background: linear-gradient(135deg, rgba(159, 18, 57, 0.85), rgba(120, 0, 22, 0.95));
   border-color: rgba(244, 63, 94, 0.4);
   color: #fff;
 }
+
 .mode-btn-behna:hover, .mode-btn-behna:focus-visible {
   border-color: #fda4af;
   box-shadow: 0 8px 24px rgba(225, 29, 72, 0.35);
   transform: translateY(-2px);
 }
+
 .mode-btn-bhai {
   background: linear-gradient(135deg, rgba(180, 83, 9, 0.85), rgba(120, 53, 15, 0.95));
   border-color: rgba(245, 158, 11, 0.4);
   color: #fff;
 }
+
 .mode-btn-bhai:hover, .mode-btn-bhai:focus-visible {
   border-color: var(--gold-light);
   box-shadow: 0 8px 24px rgba(245, 158, 11, 0.35);
   transform: translateY(-2px);
 }
+
 .mode-icon {
   font-size: 2rem;
   flex-shrink: 0;
 }
+
 .mode-text {
   flex-grow: 1;
 }
+
 .mode-title {
   display: block;
   font-size: 1.25rem;
@@ -319,17 +321,20 @@ a:focus-visible {
   margin-bottom: 3px;
   color: #fff;
 }
+
 .mode-desc {
   display: block;
   font-size: 0.82rem;
   color: #fef08a;
   line-height: 1.35;
 }
+
 .mode-arrow {
   font-size: 1.3rem;
   opacity: 0.8;
   transition: transform 0.2s ease;
 }
+
 .mode-btn:hover .mode-arrow {
   transform: translateX(4px);
 }
@@ -341,10 +346,10 @@ a:focus-visible {
   padding-top: 14px;
 }
 
-/* Screen 2: Setup Form */
 .setup-card {
   text-align: left;
 }
+
 .back-link-btn {
   background: none;
   border: none;
@@ -357,24 +362,29 @@ a:focus-visible {
   display: inline-block;
   opacity: 0.85;
 }
+
 .back-link-btn:hover {
   opacity: 1;
   text-decoration: underline;
 }
+
 .section-title {
   font-family: var(--font-festive);
   font-size: 1.85rem;
   color: #fff;
   margin-bottom: 4px;
 }
+
 .section-desc {
   font-size: 0.88rem;
   color: #fed7aa;
   margin-bottom: 22px;
 }
+
 .input-group {
   margin-bottom: 18px;
 }
+
 .input-label {
   display: flex;
   justify-content: space-between;
@@ -384,11 +394,13 @@ a:focus-visible {
   color: var(--text-main);
   margin-bottom: 6px;
 }
+
 .input-optional {
   font-size: 0.72rem;
   color: var(--gold-light);
   font-weight: 400;
 }
+
 .text-input {
   width: 100%;
   padding: 13px 16px;
@@ -400,16 +412,17 @@ a:focus-visible {
   font-family: var(--font-body);
   transition: all 0.2s ease;
 }
+
 .text-input:focus {
   border-color: var(--gold-glow);
   box-shadow: 0 0 12px rgba(245, 158, 11, 0.35);
   background: rgba(25, 4, 10, 0.95);
 }
+
 .text-input::placeholder {
   color: rgba(255, 255, 255, 0.35);
 }
 
-/* Bhai Mode Planned Amount Box */
 .bhai-planned-box {
   background: rgba(245, 158, 11, 0.08);
   border: 1px dashed rgba(245, 158, 11, 0.4);
@@ -417,12 +430,14 @@ a:focus-visible {
   padding: 16px;
   margin-bottom: 20px;
 }
+
 .chip-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 8px;
   margin-bottom: 12px;
 }
+
 .amount-chip {
   background: rgba(18, 3, 7, 0.85);
   border: 1px solid rgba(245, 158, 11, 0.3);
@@ -434,21 +449,25 @@ a:focus-visible {
   cursor: pointer;
   transition: all 0.2s ease;
 }
+
 .amount-chip:hover {
   background: rgba(245, 158, 11, 0.2);
   border-color: var(--gold-glow);
 }
+
 .amount-chip.chip-selected {
   background: var(--gold-primary);
   color: #120307;
   border-color: #fff;
   box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
 }
+
 .currency-input-wrapper {
   position: relative;
   display: flex;
   align-items: center;
 }
+
 .currency-symbol {
   position: absolute;
   left: 14px;
@@ -457,16 +476,17 @@ a:focus-visible {
   color: var(--gold-glow);
   pointer-events: none;
 }
+
 .currency-input {
   padding-left: 32px;
 }
+
 .input-hint {
   font-size: 0.74rem;
   color: #fed7aa;
   margin-top: 6px;
 }
 
-/* Primary Action Buttons */
 .primary-action-btn {
   width: 100%;
   display: flex;
@@ -485,22 +505,25 @@ a:focus-visible {
   transition: all 0.2s ease;
   margin-top: 8px;
 }
+
 .primary-action-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 12px 28px rgba(234, 88, 12, 0.5);
   filter: brightness(1.06);
 }
+
 .primary-action-btn:active {
   transform: translateY(1px);
 }
 
-/* Screen 3: Questions */
 .question-card {
   text-align: left;
 }
+
 .progress-container {
   margin-bottom: 20px;
 }
+
 .progress-meta {
   display: flex;
   justify-content: space-between;
@@ -509,15 +532,18 @@ a:focus-visible {
   font-weight: 700;
   margin-bottom: 8px;
 }
+
 .progress-step {
   color: var(--gold-light);
 }
+
 .progress-badge {
   background: rgba(245, 158, 11, 0.2);
   padding: 2px 8px;
   border-radius: 999px;
   color: #fed7aa;
 }
+
 .progress-track {
   width: 100%;
   height: 8px;
@@ -526,6 +552,7 @@ a:focus-visible {
   overflow: hidden;
   border: 1px solid rgba(245, 158, 11, 0.2);
 }
+
 .progress-fill {
   height: 100%;
   background: linear-gradient(90deg, #f59e0b, #ea580c, #dc2626);
@@ -547,6 +574,7 @@ a:focus-visible {
   gap: 12px;
   margin-bottom: 20px;
 }
+
 .option-btn {
   display: flex;
   align-items: flex-start;
@@ -564,14 +592,17 @@ a:focus-visible {
   width: 100%;
   font-family: var(--font-body);
 }
+
 .option-btn:hover {
   background: rgba(35, 8, 17, 0.95);
   border-color: var(--gold-glow);
   transform: translateX(3px);
 }
+
 .option-btn:active {
   transform: scale(0.98);
 }
+
 .option-key {
   display: inline-flex;
   align-items: center;
@@ -587,11 +618,13 @@ a:focus-visible {
   flex-shrink: 0;
   margin-top: 1px;
 }
+
 .option-btn.selected {
   background: linear-gradient(135deg, rgba(245, 158, 11, 0.25), rgba(220, 38, 38, 0.25));
   border-color: var(--gold-glow);
   box-shadow: 0 0 14px rgba(245, 158, 11, 0.4);
 }
+
 .option-btn.selected .option-key {
   background: var(--gold-primary);
   color: #120307;
@@ -604,6 +637,7 @@ a:focus-visible {
   border-top: 1px solid rgba(245, 158, 11, 0.15);
   padding-top: 14px;
 }
+
 .secondary-btn {
   background: none;
   border: 1px solid rgba(245, 158, 11, 0.3);
@@ -615,16 +649,17 @@ a:focus-visible {
   cursor: pointer;
   transition: all 0.2s ease;
 }
+
 .secondary-btn:hover {
   background: rgba(245, 158, 11, 0.1);
   color: #fff;
   border-color: var(--gold-light);
 }
 
-/* Screen 4: Fake Loading */
 .loading-card {
   padding: 48px 24px;
 }
+
 .festive-spinner {
   width: 76px;
   height: 76px;
@@ -638,6 +673,7 @@ a:focus-visible {
   margin: 0 auto 24px auto;
   animation: spin 1.2s linear infinite;
 }
+
 .spinner-diya {
   font-size: 1.8rem;
   animation: spinCounter 1.2s linear infinite;
@@ -647,6 +683,7 @@ a:focus-visible {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
 @keyframes spinCounter {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(-360deg); }
@@ -670,6 +707,7 @@ a:focus-visible {
   border: 1px dashed rgba(245, 158, 11, 0.3);
   margin-bottom: 20px;
 }
+
 .loading-message {
   font-size: 0.98rem;
   color: #fef08a;
@@ -677,6 +715,7 @@ a:focus-visible {
   line-height: 1.4;
   animation: fadeInMsg 0.4s ease;
 }
+
 @keyframes fadeInMsg {
   from { opacity: 0; transform: translateY(4px); }
   to { opacity: 1; transform: translateY(0); }
@@ -688,6 +727,7 @@ a:focus-visible {
   gap: 8px;
   margin-bottom: 16px;
 }
+
 .loading-dot {
   width: 10px;
   height: 10px;
@@ -695,6 +735,7 @@ a:focus-visible {
   border-radius: 50%;
   animation: bounceDot 1.2s infinite ease-in-out both;
 }
+
 .loading-dot:nth-child(1) { animation-delay: -0.32s; }
 .loading-dot:nth-child(2) { animation-delay: -0.16s; }
 .loading-dot:nth-child(3) { animation-delay: 0s; }
@@ -703,15 +744,16 @@ a:focus-visible {
   0%, 80%, 100% { transform: scale(0); opacity: 0.4; }
   40% { transform: scale(1); opacity: 1; }
 }
+
 .loading-subtext {
   font-size: 0.78rem;
   color: var(--text-dim);
 }
 
-/* Screen 5: Result Card */
 .result-card {
   padding: 24px 18px;
 }
+
 .result-badge-row {
   display: flex;
   justify-content: center;
@@ -719,6 +761,7 @@ a:focus-visible {
   flex-wrap: wrap;
   margin-bottom: 10px;
 }
+
 .result-headline {
   font-family: var(--font-festive);
   font-size: 1.6rem;
@@ -727,7 +770,6 @@ a:focus-visible {
   margin-bottom: 16px;
 }
 
-/* Big Amount Box (Shagun Lifafa Look) */
 .amount-hero-box {
   background: linear-gradient(135deg, rgba(120, 0, 22, 0.95), rgba(43, 4, 12, 0.95));
   border: 2px solid var(--gold-primary);
@@ -738,6 +780,7 @@ a:focus-visible {
   position: relative;
   overflow: hidden;
 }
+
 .amount-hero-box::before {
   content: "🪔";
   position: absolute;
@@ -746,6 +789,7 @@ a:focus-visible {
   font-size: 2rem;
   opacity: 0.2;
 }
+
 .amount-hero-box::after {
   content: "🪔";
   position: absolute;
@@ -754,6 +798,7 @@ a:focus-visible {
   font-size: 2rem;
   opacity: 0.2;
 }
+
 .amount-label {
   font-size: 0.72rem;
   font-weight: 800;
@@ -761,6 +806,7 @@ a:focus-visible {
   color: var(--gold-light);
   margin-bottom: 4px;
 }
+
 .amount-digits {
   display: flex;
   align-items: baseline;
@@ -771,15 +817,18 @@ a:focus-visible {
   text-shadow: 0 0 20px rgba(251, 191, 36, 0.8), 0 3px 6px rgba(0, 0, 0, 0.9);
   line-height: 1.1;
 }
+
 .amount-digits .currency-symbol {
   position: static;
   font-size: 2.2rem;
   margin-right: 4px;
   color: var(--gold-light);
 }
+
 .odometer-number {
   font-variant-numeric: tabular-nums;
 }
+
 .shagun-shubh-tag {
   font-size: 0.75rem;
   font-weight: 700;
@@ -787,9 +836,6 @@ a:focus-visible {
   margin-top: 6px;
 }
 
-/* ==========================================================================
-   SHAGUN LIFAFA (ENVELOPE) & "BEHNA KA SHAGUN" RUBBER STAMP
-   ========================================================================== */
 .shagun-lifafa-wrapper {
   margin-bottom: 18px;
   position: relative;
@@ -805,7 +851,6 @@ a:focus-visible {
   position: relative;
 }
 
-/* Decorative Envelope Flap & Auspicious ₹1 Coin */
 .lifafa-flap {
   height: 34px;
   background: linear-gradient(180deg, #9f1239 0%, #780016 100%);
@@ -834,14 +879,12 @@ a:focus-visible {
   user-select: none;
 }
 
-/* Lifafa Parchment Body Inside */
 .lifafa-body {
   background: rgba(18, 3, 7, 0.9);
   padding: 24px 16px 14px 16px;
   position: relative;
 }
 
-/* Authentic Tilted Rubber Stamp: "BEHNA KA SHAGUN" */
 .shagun-rubber-stamp {
   position: absolute;
   top: 14px;
@@ -910,7 +953,6 @@ a:focus-visible {
   margin-top: 1px;
 }
 
-/* Lifafa Details Header */
 .lifafa-header-row {
   display: flex;
   align-items: center;
@@ -932,7 +974,6 @@ a:focus-visible {
   font-weight: 700;
 }
 
-/* Details Grid */
 .lifafa-details-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -985,7 +1026,6 @@ a:focus-visible {
   text-align: center;
 }
 
-/* Bhai Comparison Box */
 .comparison-card {
   background: rgba(245, 158, 11, 0.12);
   border: 1px dashed var(--gold-primary);
@@ -994,6 +1034,7 @@ a:focus-visible {
   margin-bottom: 16px;
   text-align: left;
 }
+
 .comparison-badge {
   display: inline-block;
   background: var(--gold-primary);
@@ -1005,13 +1046,13 @@ a:focus-visible {
   margin-bottom: 6px;
   text-transform: uppercase;
 }
+
 .comparison-text {
   font-size: 0.88rem;
   line-height: 1.45;
   color: #fff;
 }
 
-/* Roast Box */
 .roast-box {
   background: rgba(18, 3, 7, 0.85);
   border: 1px solid rgba(220, 38, 38, 0.4);
@@ -1020,15 +1061,18 @@ a:focus-visible {
   margin-bottom: 14px;
   text-align: left;
 }
+
 .roast-title-row {
   display: flex;
   align-items: center;
   gap: 6px;
   margin-bottom: 6px;
 }
+
 .roast-icon {
   font-size: 1.1rem;
 }
+
 .roast-tag {
   font-size: 0.72rem;
   font-weight: 800;
@@ -1036,6 +1080,7 @@ a:focus-visible {
   color: #f87171;
   text-transform: uppercase;
 }
+
 .roast-quote {
   font-size: 0.94rem;
   line-height: 1.45;
@@ -1043,7 +1088,6 @@ a:focus-visible {
   font-style: italic;
 }
 
-/* Extras Box */
 .extras-box {
   background: rgba(245, 158, 11, 0.08);
   border: 1px solid rgba(245, 158, 11, 0.25);
@@ -1052,6 +1096,7 @@ a:focus-visible {
   margin-bottom: 22px;
   text-align: left;
 }
+
 .extras-tag {
   font-size: 0.68rem;
   font-weight: 800;
@@ -1059,18 +1104,19 @@ a:focus-visible {
   letter-spacing: 0.8px;
   margin-bottom: 4px;
 }
+
 .extras-content {
   font-size: 0.88rem;
   font-weight: 700;
   color: #fef08a;
 }
 
-/* Result Action Buttons */
 .result-actions {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
+
 .action-btn {
   display: flex;
   align-items: center;
@@ -1086,70 +1132,80 @@ a:focus-visible {
   transition: all 0.2s ease;
   border: none;
 }
+
 .action-btn-whatsapp {
   background: var(--whatsapp-green);
   color: #ffffff;
   box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
 }
+
 .action-btn-whatsapp:hover {
   background: #20ba59;
   transform: translateY(-2px);
 }
+
 .action-btn-primary {
   background: linear-gradient(135deg, #f59e0b, #ea580c);
   color: #ffffff;
   box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
 }
+
 .action-btn-primary:hover {
   filter: brightness(1.08);
   transform: translateY(-2px);
 }
+
 .action-btn-secondary {
   background: rgba(255, 255, 255, 0.12);
   color: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.25);
 }
+
 .action-btn-secondary:hover {
   background: rgba(255, 255, 255, 0.2);
 }
+
 .action-btn-ghost {
   background: none;
   color: #fed7aa;
   font-size: 0.88rem;
   padding: 10px;
 }
+
 .action-btn-ghost:hover {
   color: #fff;
   text-decoration: underline;
 }
 
-/* Footer */
 .app-footer {
   margin-top: auto;
   padding-top: 28px;
   text-align: center;
 }
+
 .footer-text {
   font-size: 0.85rem;
   color: #fed7aa;
   margin-bottom: 4px;
 }
+
 .creator-link {
   color: var(--gold-light);
   font-weight: 700;
   text-decoration: none;
   border-bottom: 1px dotted var(--gold-light);
 }
+
 .creator-link:hover {
   color: #fff;
   border-bottom-style: solid;
 }
+
 .footer-subtext {
   font-size: 0.72rem;
   color: rgba(254, 215, 170, 0.6);
 }
 
-/* Toast Popup */
 .toast-popup {
   position: fixed;
   bottom: 24px;
@@ -1169,19 +1225,16 @@ a:focus-visible {
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   white-space: nowrap;
 }
+
 .toast-popup.toast-visible {
   transform: translateX(-50%) translateY(0);
   opacity: 1;
 }
 
-/* Helper Utilities */
 .hidden {
   display: none !important;
 }
 
-/* ==========================================================================
-   ACCESSIBILITY: PREFERS REDUCED MOTION
-   ========================================================================== */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -1194,7 +1247,6 @@ a:focus-visible {
   }
 }
 
-/* Small Screens (< 360px) Adjustments */
 @media (max-width: 360px) {
   .app-container {
     padding: 8px 10px 20px 10px;
