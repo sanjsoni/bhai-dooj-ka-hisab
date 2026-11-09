@@ -1,30 +1,15 @@
-/**
- * ============================================================================
- * BHAI DOOJ KA HISAAB (Shagun Calculator) - CORE APPLICATION SCRIPT
- * Full Vanilla JS • Zero External Dependencies • Mobile-First Viral App
- * ============================================================================
- */
-
 (function () {
   'use strict';
 
-  /* ==========================================================================
-     APP STATE
-     ========================================================================== */
   const state = {
-    mode: 'behna', // 'behna' | 'bhai'
+    mode: 'behna',
     herName: 'Behna',
     hisName: 'Bhai',
-    plannedAmount: null, // number | null (Bhai Mode only)
+    plannedAmount: null,
     currentQuestionIndex: 0,
-    answers: [], // Array of selected option scores (1-4)
+    answers: [],
     calculatedResult: null
   };
-
-  /* ==========================================================================
-     QUESTION BANKS (7 Questions per Mode, 4 Options each, Hidden Score 1 to 4)
-     Higher score = Higher Brother's Guilt / Higher Shagun Amount
-     ========================================================================== */
 
   const QUESTIONS_BEHNA = [
     {
@@ -158,9 +143,6 @@
     }
   ];
 
-  /* ==========================================================================
-     FAKE LOADING MESSAGES (Rotating every 450ms during 2.2s loading)
-     ========================================================================== */
   const LOADING_MSGS_BEHNA = [
     "Bhai ki purani chori ki list scan ho rahi hai...",
     "Zomato vs Shagun budget calculate kiya ja raha hai...",
@@ -177,9 +159,6 @@
     "Bhagwan se tumhare liye forgiveness calculate ho rahi hai..."
   ];
 
-  /* ==========================================================================
-     TIER DATA & ROAST LINES (4 to 5 per tier per mode)
-     ========================================================================== */
   const TIERS = {
     low: {
       name: "Kanjoos Bhai",
@@ -265,9 +244,6 @@
     "+ Doston ke saamne behen ki tareef karne ka legal affidavit"
   ];
 
-  /* ==========================================================================
-     DOM ELEMENTS
-     ========================================================================== */
   const screens = {
     landing: document.getElementById('screenLanding'),
     setup: document.getElementById('screenSetup'),
@@ -276,11 +252,8 @@
     result: document.getElementById('screenResult')
   };
 
-  // Landing
   const btnModeBehna = document.getElementById('btnModeBehna');
   const btnModeBhai = document.getElementById('btnModeBhai');
-
-  // Setup
   const btnBackToLanding = document.getElementById('btnBackToLanding');
   const setupHeaderBadge = document.getElementById('setupHeaderBadge');
   const setupTitle = document.getElementById('setupTitle');
@@ -292,7 +265,6 @@
   const amountChips = document.querySelectorAll('.amount-chip');
   const btnStartQuestions = document.getElementById('btnStartQuestions');
 
-  // Question
   const questionStepText = document.getElementById('questionStepText');
   const questionModeBadge = document.getElementById('questionModeBadge');
   const progressBarFill = document.getElementById('progressBarFill');
@@ -300,10 +272,8 @@
   const optionsContainer = document.getElementById('optionsContainer');
   const btnPrevQuestion = document.getElementById('btnPrevQuestion');
 
-  // Loading
   const loadingDynamicMsg = document.getElementById('loadingDynamicMsg');
 
-  // Result
   const resultModePill = document.getElementById('resultModePill');
   const resultTierBadge = document.getElementById('resultTierBadge');
   const resultHeadline = document.getElementById('resultHeadline');
@@ -325,9 +295,6 @@
   const toastContainer = document.getElementById('toastContainer');
   const storyCardCanvas = document.getElementById('storyCardCanvas');
 
-  /* ==========================================================================
-     NAVIGATION & SCREEN SWITCHING
-     ========================================================================== */
   function showScreen(screenKey) {
     Object.keys(screens).forEach(key => {
       if (key === screenKey) {
@@ -348,9 +315,6 @@
     }, 2800);
   }
 
-  /* ==========================================================================
-     MODE SELECTION & SETUP
-     ========================================================================== */
   function setMode(mode) {
     state.mode = mode;
     state.answers = [];
@@ -380,7 +344,6 @@
     showScreen('landing');
   });
 
-  // Amount Chip Selection in Bhai Mode
   amountChips.forEach(chip => {
     chip.addEventListener('click', () => {
       amountChips.forEach(c => c.classList.remove('chip-selected'));
@@ -394,7 +357,6 @@
     amountChips.forEach(c => c.classList.remove('chip-selected'));
   });
 
-  // Start Questions after Setup
   btnStartQuestions.addEventListener('click', () => {
     const herVal = inputHerName.value.trim();
     const hisVal = inputHisName.value.trim();
@@ -415,9 +377,6 @@
     showScreen('question');
   });
 
-  /* ==========================================================================
-     QUESTIONS ENGINE
-     ========================================================================== */
   function getActiveQuestions() {
     return state.mode === 'behna' ? QUESTIONS_BEHNA : QUESTIONS_BHAI;
   }
@@ -427,7 +386,6 @@
     const qIndex = state.currentQuestionIndex;
     const q = questions[qIndex];
 
-    // Meta & Progress
     const totalQ = questions.length;
     questionStepText.textContent = `Sawaal ${qIndex + 1} / ${totalQ}`;
     questionModeBadge.textContent = state.mode === 'behna' ? '🌸 Behna Mode' : '🔥 Bhai Mode';
@@ -435,10 +393,8 @@
     const pct = ((qIndex + 1) / totalQ) * 100;
     progressBarFill.style.width = `${pct}%`;
 
-    // Title
     questionTitle.textContent = q.title;
 
-    // Render Options
     optionsContainer.innerHTML = '';
     const letters = ['A', 'B', 'C', 'D'];
 
@@ -465,12 +421,7 @@
       optionsContainer.appendChild(btn);
     });
 
-    // Prev Button Visibility
-    if (qIndex === 0) {
-      btnPrevQuestion.style.visibility = 'hidden';
-    } else {
-      btnPrevQuestion.style.visibility = 'visible';
-    }
+    btnPrevQuestion.style.visibility = qIndex === 0 ? 'hidden' : 'visible';
   }
 
   function handleOptionSelect(score) {
@@ -484,7 +435,6 @@
         renderQuestion();
       }, 150);
     } else {
-      // Finished all questions -> Run fake loading then results
       triggerLoadingSequence();
     }
   }
@@ -496,9 +446,6 @@
     }
   });
 
-  /* ==========================================================================
-     FAKE LOADING SCREEN (2.2s with rotating funny lines)
-     ========================================================================== */
   function triggerLoadingSequence() {
     showScreen('loading');
 
@@ -519,11 +466,7 @@
     }, 2200);
   }
 
-  /* ==========================================================================
-     CALCULATION & TIERS LOGIC
-     ========================================================================== */
   function calculateAndShowResult() {
-    // Sum scores (range 7 to 28)
     const totalScore = state.answers.reduce((acc, curr) => acc + (curr || 2), 0);
 
     let tierKey = 'medium';
@@ -538,19 +481,13 @@
     }
 
     const tierInfo = TIERS[tierKey];
-
-    // Pick an amount with slight randomness so retakes feel alive
     const amountsPool = tierInfo.amounts;
     const finalAmount = amountsPool[Math.floor(Math.random() * amountsPool.length)];
 
-    // Pick roast line
     const roasts = state.mode === 'behna' ? tierInfo.roastsBehna : tierInfo.roastsBhai;
     const roast = roasts[Math.floor(Math.random() * roasts.length)];
-
-    // Pick extras line
     const extra = MANDATORY_EXTRAS[Math.floor(Math.random() * MANDATORY_EXTRAS.length)];
 
-    // Bhai mode comparison
     let comparison = null;
     if (state.mode === 'bhai' && state.plannedAmount !== null) {
       const planned = state.plannedAmount;
@@ -591,15 +528,11 @@
     triggerConfetti();
   }
 
-  /* ==========================================================================
-     RESULT UI DISPLAY & COUNT-UP ANIMATION
-     ========================================================================== */
   function displayResultUI() {
     const res = state.calculatedResult;
     const behna = state.herName;
     const bhai = state.hisName;
 
-    // Badges & Headlines
     if (state.mode === 'behna') {
       resultModePill.textContent = "🌸 Behna Recovery Order";
       resultHeadline.textContent = `${bhai} owes ${behna}`;
@@ -610,23 +543,19 @@
 
     resultTierBadge.textContent = res.tierName;
 
-    // Count-up animation for Amount
     animateCountUp(res.amount);
 
-    // Update Shagun Lifafa Receipt & "Behna Ka Shagun" Stamp
     if (lifafaHerName) lifafaHerName.textContent = behna;
     if (lifafaHisName) lifafaHisName.textContent = bhai;
     if (lifafaAmount) lifafaAmount.textContent = `₹${res.amount.toLocaleString('en-IN')}`;
     if (stampSerial) stampSerial.textContent = `NO. BD-${Math.floor(1000 + Math.random() * 9000)}-SHAGUN`;
 
-    // Re-trigger rubber stamp drop animation
     if (rubberStamp) {
       rubberStamp.classList.remove('animate-stamp');
-      void rubberStamp.offsetWidth; // force DOM reflow
+      void rubberStamp.offsetWidth;
       rubberStamp.classList.add('animate-stamp');
     }
 
-    // Bhai Mode Comparison Box
     if (res.comparison) {
       bhaiComparisonBox.classList.remove('hidden');
       const badgeElem = document.getElementById('comparisonBadge');
@@ -636,23 +565,20 @@
       bhaiComparisonBox.classList.add('hidden');
     }
 
-    // Roast & Extras
     resultRoastText.textContent = `"${res.roast}"`;
     resultExtrasText.textContent = res.extra;
 
-    // WhatsApp Cross-share Button customization
     setupWhatsAppShare(res);
   }
 
   function animateCountUp(targetAmount) {
-    const duration = 1200; // ms
+    const duration = 1200;
     const startTime = performance.now();
     const startVal = 0;
 
     function update(currentTime) {
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / duration, 1);
-      // Ease-out cubic curve
       const easeProgress = 1 - Math.pow(1 - progress, 3);
       const currentVal = Math.floor(startVal + (targetAmount - startVal) * easeProgress);
 
@@ -668,9 +594,6 @@
     requestAnimationFrame(update);
   }
 
-  /* ==========================================================================
-     WHATSAPP CROSS-SHARING
-     ========================================================================== */
   function setupWhatsAppShare(res) {
     const behna = state.herName;
     const bhai = state.hisName;
@@ -690,9 +613,6 @@
     btnWhatsAppShare.href = `https://api.whatsapp.com/send?text=${encoded}`;
   }
 
-  /* ==========================================================================
-     NATIVE SHARE & CLIPBOARD FALLBACK
-     ========================================================================== */
   btnShareNative.addEventListener('click', async () => {
     const res = state.calculatedResult;
     const shareData = {
@@ -723,7 +643,6 @@
         showToast("Link share nahi ho paya.");
       });
     } else {
-      // Legacy fallback
       const textArea = document.createElement("textarea");
       textArea.value = url;
       textArea.style.position = "fixed";
@@ -740,9 +659,6 @@
     }
   }
 
-  /* ==========================================================================
-     RESTART / TRY AGAIN
-     ========================================================================== */
   btnRestartApp.addEventListener('click', () => {
     state.currentQuestionIndex = 0;
     state.answers = [];
@@ -750,10 +666,6 @@
     showScreen('landing');
   });
 
-  /* ==========================================================================
-     INSTAGRAM STORY CARD GENERATION (1080 x 1920 CANVAS)
-     High-Resolution • Canvas Native • Zero External Library Dependency
-     ========================================================================== */
   btnDownloadCard.addEventListener('click', () => {
     generateAndDownloadStoryCard();
   });
@@ -806,7 +718,6 @@
     canvas.width = W;
     canvas.height = H;
 
-    // 1. Rich Festive Dark Background
     const bgGrad = ctx.createLinearGradient(0, 0, 0, H);
     bgGrad.addColorStop(0, '#380612');
     bgGrad.addColorStop(0.3, '#1c0309');
@@ -815,7 +726,6 @@
     ctx.fillStyle = bgGrad;
     ctx.fillRect(0, 0, W, H);
 
-    // 2. Festive Ambient Glowing Spheres
     const topGlow = ctx.createRadialGradient(W / 2, 280, 50, W / 2, 280, 550);
     topGlow.addColorStop(0, 'rgba(245, 158, 11, 0.28)');
     topGlow.addColorStop(0.6, 'rgba(220, 38, 38, 0.12)');
@@ -823,7 +733,6 @@
     ctx.fillStyle = topGlow;
     ctx.fillRect(0, 0, W, H);
 
-    // 3. Ornate Double Golden Border
     ctx.strokeStyle = '#f59e0b';
     ctx.lineWidth = 6;
     roundRect(ctx, 40, 40, W - 80, H - 80, 36, false, true);
@@ -832,9 +741,8 @@
     ctx.lineWidth = 2;
     ctx.setLineDash([12, 10]);
     roundRect(ctx, 60, 60, W - 120, H - 120, 26, false, true);
-    ctx.setLineDash([]); // reset
+    ctx.setLineDash([]);
 
-    // 4. Corner Ornaments (Festive Diyas & Stars)
     ctx.font = '48px sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
@@ -843,7 +751,6 @@
     ctx.fillText('🪔', 90, H - 90);
     ctx.fillText('🪔', W - 90, H - 90);
 
-    // 5. Header Tag
     ctx.fillStyle = 'rgba(245, 158, 11, 0.2)';
     roundRect(ctx, W / 2 - 250, 140, 500, 54, 27, true, false);
     ctx.strokeStyle = '#f59e0b';
@@ -853,18 +760,15 @@
     ctx.font = 'bold 24px Outfit, sans-serif';
     ctx.fillStyle = '#fef08a';
     ctx.textAlign = 'center';
-    ctx.letterSpacing = '2px';
     const headerTitle = state.mode === 'behna'
       ? '✨ OFFICIAL SHAGUN RECOVERY BILL ✨'
       : '✨ OFFICIAL CONFESSION & PENALTY RECEIPT ✨';
     ctx.fillText(headerTitle, W / 2, 168);
 
-    // 6. Big Title
     ctx.font = 'bold 64px Rozha One, serif';
     ctx.fillStyle = '#ffffff';
     ctx.fillText('Bhai Dooj Ka Hisaab', W / 2, 255);
 
-    // 7. Subtitle / Department
     ctx.font = '500 28px Outfit, sans-serif';
     ctx.fillStyle = '#fcd34d';
     const subDept = state.mode === 'behna'
@@ -872,7 +776,6 @@
       : 'Confession Cell • Conscience Clearance Receipt';
     ctx.fillText(subDept, W / 2, 305);
 
-    // 8. Meta Box: Payer & Payee
     ctx.fillStyle = 'rgba(20, 3, 7, 0.85)';
     roundRect(ctx, 110, 355, W - 220, 130, 24, true, false);
     ctx.strokeStyle = 'rgba(245, 158, 11, 0.35)';
@@ -890,7 +793,6 @@
     ctx.fillText(`🌸 ${state.herName}`, 140, 445);
     ctx.fillText(`🔥 ${state.hisName}`, 580, 445);
 
-    // 9. Central Big Shagun Lifafa Box
     const lifafaGrad = ctx.createLinearGradient(110, 520, W - 110, 940);
     lifafaGrad.addColorStop(0, '#880820');
     lifafaGrad.addColorStop(1, '#4a0815');
@@ -906,12 +808,10 @@
     ctx.fillStyle = '#fef08a';
     ctx.fillText('TOTAL OFFICIAL SHAGUN DUE', W / 2, 575);
 
-    // Big Amount
     ctx.font = '900 115px Outfit, sans-serif';
     ctx.fillStyle = '#ffffff';
     ctx.fillText(`₹${res.amount.toLocaleString('en-IN')}`, W / 2, 700);
 
-    // Tier Badge Pill inside Lifafa
     ctx.fillStyle = '#f59e0b';
     roundRect(ctx, W / 2 - 200, 750, 400, 60, 30, true, false);
     ctx.font = 'bold 30px Outfit, sans-serif';
@@ -922,7 +822,6 @@
     ctx.fillStyle = '#fed7aa';
     ctx.fillText('100% Shubh Shagun Verified • Non-Refundable', W / 2, 865);
 
-    // Official "BEHNA KA SHAGUN" Rubber Stamp on Story Card
     ctx.save();
     ctx.translate(W - 250, 580);
     ctx.rotate(-0.16);
@@ -950,7 +849,6 @@
 
     let nextY = 980;
 
-    // 10. Bhai Mode Comparison Box (if applicable)
     if (res.comparison) {
       ctx.fillStyle = 'rgba(245, 158, 11, 0.14)';
       roundRect(ctx, 110, nextY, W - 220, 160, 20, true, false);
@@ -970,7 +868,6 @@
       nextY += 190;
     }
 
-    // 11. Roast Box
     ctx.fillStyle = 'rgba(20, 3, 7, 0.9)';
     roundRect(ctx, 110, nextY, W - 220, 250, 24, true, false);
     ctx.strokeStyle = 'rgba(239, 68, 68, 0.5)';
@@ -988,7 +885,6 @@
 
     nextY += 280;
 
-    // 12. Extras Line Box
     ctx.fillStyle = 'rgba(245, 158, 11, 0.1)';
     roundRect(ctx, 110, nextY, W - 220, 130, 20, true, false);
     ctx.strokeStyle = 'rgba(245, 158, 11, 0.3)';
@@ -1004,7 +900,6 @@
     ctx.fillStyle = '#fef08a';
     wrapText(ctx, res.extra, 140, nextY + 84, W - 280, 34);
 
-    // 13. Official Seal / Stamp on Bottom Right
     ctx.save();
     ctx.translate(W - 240, H - 320);
     ctx.rotate(-0.14);
@@ -1020,17 +915,15 @@
     ctx.fillText('VASOOLI MANDATE', 0, 18);
     ctx.restore();
 
-    // 14. Footer / Watermark
     ctx.textAlign = 'center';
     ctx.font = 'bold 26px Outfit, sans-serif';
     ctx.fillStyle = '#fcd34d';
-    ctx.fillText('Calculate yours at: bhaidoojkahisaab.vercel.app', W / 2, H - 150);
+    ctx.fillText('Calculate yours at: shagundedo.vercel.app', W / 2, H - 150);
 
     ctx.font = '500 22px Outfit, sans-serif';
     ctx.fillStyle = 'rgba(254, 215, 170, 0.7)';
     ctx.fillText('Made with ❤️ by Sanjay • Share on Instagram Story', W / 2, H - 110);
 
-    // Convert Canvas to PNG and Trigger Download
     try {
       const dataUrl = canvas.toDataURL('image/png');
       const downloadLink = document.createElement('a');
@@ -1045,10 +938,6 @@
     }
   }
 
-  /* ==========================================================================
-     LIGHTWEIGHT CELEBRATION CONFETTI ENGINE (Pure JS Canvas)
-     Zero external library, respects reduced-motion
-     ========================================================================== */
   function triggerConfetti() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       return;
@@ -1118,11 +1007,7 @@
     requestAnimationFrame(renderConfetti);
   }
 
-  /* ==========================================================================
-     KEYBOARD ACCESSIBILITY
-     ========================================================================== */
   document.addEventListener('keydown', (e) => {
-    // If user is on question screen and presses 1, 2, 3, or 4
     if (screens.question.classList.contains('screen-active')) {
       const keyMap = { '1': 0, '2': 1, '3': 2, '4': 3, 'a': 0, 'b': 1, 'c': 2, 'd': 3 };
       const selectedIdx = keyMap[e.key.toLowerCase()];
