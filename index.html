@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Bhai Dooj Ka Hisaab 🪔 | Shagun Calculator</title>
   
-  <!-- Primary Meta Tags -->
   <meta name="title" content="Bhai Dooj Ka Hisaab 🪔 | Shagun Calculator">
   <meta name="description" content="Bhai ke wallet ka sach, ab behna ke haath mein! Calculate how much shagun bhai owes behna with this hilarious viral Desi calculator.">
   <meta name="keywords" content="Bhai Dooj, Shagun Calculator, Bhai Dooj Ka Hisaab, Desi Meme, Bhai Dooj Gift, Indian Festival">
@@ -14,17 +13,17 @@
 
   <!-- Open Graph / Facebook / WhatsApp -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://bhaidoojkahisaab.vercel.app/">
+  <meta property="og:url" content="https://shagundedo.vercel.app/">
   <meta property="og:title" content="Bhai Dooj Ka Hisaab 🪔 | Official Shagun Calculator">
   <meta property="og:description" content="Kya bhai Kanjoos hai ya Ambani? Calculate the official shagun penalty & share the confession card!">
-  <meta property="og:image" content="https://bhaidoojkahisaab.vercel.app/og-preview.png">
+  <meta property="og:image" content="https://shagundedo.vercel.app/og-preview.png">
 
   <!-- Twitter Card -->
   <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://bhaidoojkahisaab.vercel.app/">
+  <meta property="twitter:url" content="https://shagundedo.vercel.app/">
   <meta property="twitter:title" content="Bhai Dooj Ka Hisaab 🪔 | Shagun Calculator">
   <meta property="twitter:description" content="Calculate what bhai owes his behna this Bhai Dooj. 100% comedy, 0% escape!">
-  <meta property="twitter:image" content="https://bhaidoojkahisaab.vercel.app/og-preview.png">
+  <meta property="twitter:image" content="https://shagundedo.vercel.app/og-preview.png">
 
   <!-- Favicon (Festive Diya SVG) -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🪔</text></svg>">
@@ -36,28 +35,12 @@
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css">
-
-  <!-- ========================================================================= -->
-  <!-- ANALYTICS PLACEHOLDER (Free & Privacy-Friendly: Plausible or GoatCounter) -->
-  <!-- ========================================================================= -->
-  <!-- OPTION 1: Plausible Analytics (Uncomment and replace yourdomain.com) -->
-  <!-- <script defer data-domain="bhaidoojkahisaab.vercel.app" src="https://plausible.io/js/script.js"></script> -->
-
-  <!-- OPTION 2: GoatCounter Analytics (Uncomment and replace YOUR_CODE) -->
-  <!-- <script data-goatcounter="https://YOUR_CODE.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script> -->
 </head>
 <body>
-  <!-- Confetti Canvas for Celebratory Explosions -->
   <canvas id="confettiCanvas" aria-hidden="true"></canvas>
-
-  <!-- Ambient Festive Background Lights -->
   <div class="ambient-glow glow-top" aria-hidden="true"></div>
   <div class="ambient-glow glow-bottom" aria-hidden="true"></div>
-
-  <!-- App Wrapper (Mobile-first centered container) -->
   <main id="app" class="app-container" role="main">
-    
-    <!-- HEADER BAR -->
     <header class="app-header">
       <div class="header-content">
         <span class="header-diya" aria-hidden="true">🪔</span>
@@ -68,28 +51,20 @@
         <span class="header-diya" aria-hidden="true">🪔</span>
       </div>
     </header>
-
-    <!-- SCREEN 1: LANDING -->
     <section id="screenLanding" class="screen screen-active">
       <div class="hero-card">
-        <!-- Animated Festive Diya SVG -->
         <div class="diya-wrapper" aria-hidden="true">
-          <svg class="festive-diya-svg" viewBox="0 0 160 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Flame Glow -->
+          <svg class="festive-diya-svg" viewBox="0 0 160 120" fill="none" xmlns="http://www.w3.org/2000/svg"> 
             <ellipse class="flame-glow" cx="80" cy="38" rx="28" ry="32" fill="url(#flameGlowGrad)" />
-            <!-- Flame Body -->
             <path class="flame-outer" d="M80 8C70 28 65 38 65 52C65 64 71.7 72 80 72C88.3 72 95 64 95 52C95 38 90 28 80 8Z" fill="url(#flameGradOuter)" />
             <path class="flame-inner" d="M80 24C74 36 71 44 71 54C71 62 75 67 80 67C85 67 89 62 89 54C89 44 86 36 80 24Z" fill="url(#flameGradInner)" />
-            <!-- Diya Base (Brass / Clay) -->
             <path d="M20 72C24 96 52 110 80 110C108 110 136 96 140 72C140 72 108 80 80 80C52 80 20 72 20 72Z" fill="url(#diyaBodyGrad)" />
             <ellipse cx="80" cy="74" rx="60" ry="10" fill="url(#diyaRimGrad)" stroke="#f59e0b" stroke-width="1.5" />
-            <!-- Festive Dots on Rim -->
             <circle cx="40" cy="74" r="2.5" fill="#fef08a" />
             <circle cx="60" cy="76" r="2.5" fill="#fef08a" />
             <circle cx="80" cy="77" r="2.5" fill="#fef08a" />
             <circle cx="100" cy="76" r="2.5" fill="#fef08a" />
             <circle cx="120" cy="74" r="2.5" fill="#fef08a" />
-            <!-- Gradients Definition -->
             <defs>
               <radialGradient id="flameGlowGrad" cx="50%" cy="50%" r="50%">
                 <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.8" />
@@ -124,8 +99,6 @@
         <p class="sub-heading">
           Bhai ke wallet ka sach, ab behna ke haath mein! Saare jhoothe bahane, chori ki chocolates aur purane kaand jodo... aur official shagun vasoolo! 💸
         </p>
-
-        <!-- Mode Selection Buttons -->
         <div class="mode-selection" role="group" aria-label="Choose your role">
           <button id="btnModeBehna" class="mode-btn mode-btn-behna" type="button" aria-label="Select Behna Mode">
             <span class="mode-icon">🌸</span>
@@ -145,15 +118,11 @@
             <span class="mode-arrow">👉</span>
           </button>
         </div>
-
-        <!-- Fun disclaimer -->
         <div class="festive-note">
           <span>⚖️ 100% Satya & Comedy Audit • Behen Hamesha Jeetegi</span>
         </div>
       </div>
     </section>
-
-    <!-- SCREEN 2: NAMES & SETUP -->
     <section id="screenSetup" class="screen">
       <div class="card setup-card">
         <button id="btnBackToLanding" class="back-link-btn" type="button" aria-label="Go back to landing screen">
